@@ -129,45 +129,26 @@ body {
                 <a class="dark" href="mailto:luckyneck@icloud.com">
                     <img src="mail.svg" width="32" style="scale: 120%;">
                 </a>
-                <a class="dark" href="https://yoomoney.ru/to/4100117128574844/">
-                    <img src="yoo.png" width="40" style="scale: 100%;">
-                </a>
             </socials>
+<div class="header__inner">
+    <p>&#127911; <span id="song">&#8987;</span></p>
+</div>
+<div class="header__inner">
+    <p><small>последнее прослушанное на ласт фм</small> <small>(теперь я вам ласт фм)</small></p>
+</div>
+<script type="text/javascript">
+    let user = 'exmansa';
+    let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+    let song = document.querySelector('#song');
+    fetch(url)
+        .then(function (response) {
+            return response.json()
+        }).then(function (json) {
+            song.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
+        });
+</script>
         </div>
     </div>
-<div class="footer" id="randomPhrase"></div>
-<script>
-        const phrases = [
-            "дум пацаны",
-            "кстати привет насте",
-            "взял ножик - режь, взял дошик - ешь",
-            "одна ошибка и ты ошибся",
-            "вятка будет вяткой",
-            "посхалко",
-            "бу́ди в кирово-чепецке",
-            "если у вас фразы пошли по кругу это не значит что вы увидели все",
-            "эй детка ты вятич или подделка",
-            "встретьте меня после шараги кто нибудь",
-            "уржумский квас вкусный?",
-            "пятница-развратница",
-            "скиньте денег на данар пж",
-            "ютуб угрожает гармоничному развитию молодёжи",
-            "в вк нет никакого 18+ контента",
-            "у вас карта в стоп-листе",
-            "киров-650))",
-            "я знаю что иконка юмани криво стоит мне просто лень её переделывать",
-            "а муха тоже вертолёт",
-            "всё решено",
-            "лол до фикса у меня кнопка ютуба вела на стим)"
-        ];
-
-        // Выбираем случайную фразу
-        const randomIndex = Math.floor(Math.random() * phrases.length);
-        const randomPhrase = phrases[randomIndex];
-
-        // Отображаем фразу на странице
-        document.getElementById('randomPhrase').innerText = randomPhrase;
-    </script>
 </body>
 </script>
 </html>
