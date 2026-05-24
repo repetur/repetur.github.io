@@ -1,0 +1,391 @@
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+  --background: #06070a;
+  --foreground: #f6f7fb;
+  --muted: #b9c0ce;
+  --panel: rgba(10, 13, 20, 0.72);
+  --panel-strong: rgba(12, 15, 24, 0.88);
+  --border: rgba(255, 255, 255, 0.16);
+  --accent: #8bd3ff;
+  --accent-strong: #ffcf70;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  --radius-lg: 32px;
+  --radius-md: 22px;
+  --radius-sm: 999px;
+  --intro-delay: 2s;
+  --intro-duration: 0.45s;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  background: transparent;
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  content: '';
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(120deg, rgba(0, 0, 0, 0.72), rgba(2, 4, 8, 0.42)),
+    radial-gradient(circle at top left, rgba(139, 211, 255, 0.22), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(255, 207, 112, 0.16), transparent 28rem);
+  backdrop-filter: saturate(1.2);
+  animation: intro-overlay var(--intro-duration) ease-out var(--intro-delay) forwards;
+}
+
+.background-video {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  opacity: 1;
+  filter: saturate(1) contrast(1.08);
+  pointer-events: none;
+  animation: intro-video var(--intro-duration) ease-out var(--intro-delay) forwards;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  animation: intro-content var(--intro-duration) ease-out var(--intro-delay) forwards;
+  display: grid;
+  width: min(1120px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(32px, 7vw, 96px) 0;
+  gap: 24px;
+  align-content: center;
+}
+
+.hero-card,
+.glass-card,
+.socials {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px) saturate(1.22);
+}
+
+.hero-card {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.window-bar {
+  display: flex;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.window-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.window-dot--red {
+  background: #ff6b6b;
+}
+
+.window-dot--yellow {
+  background: #ffd166;
+}
+
+.window-dot--green {
+  background: #5ce1a8;
+}
+
+.hero-content {
+  display: grid;
+  gap: 22px;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.lastfm-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid rgba(139, 211, 255, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  background: rgba(139, 211, 255, 0.1);
+  text-decoration: none;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.lastfm-widget:hover,
+.lastfm-widget:focus-visible {
+  border-color: rgba(139, 211, 255, 0.62);
+  background: rgba(139, 211, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.lastfm-widget:focus-visible {
+  outline: 3px solid rgba(139, 211, 255, 0.36);
+  outline-offset: 3px;
+}
+
+.lastfm-widget__status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(139, 211, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.lastfm-widget--live .lastfm-widget__status {
+  background: #5ce1a8;
+  box-shadow: 0 0 10px rgba(92, 225, 168, 0.65);
+  animation: lastfm-pulse 1.4s ease-in-out infinite;
+}
+
+.lastfm-widget__cover {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.lastfm-widget__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.lastfm-widget__label {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lastfm-widget__meta {
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--foreground);
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(42ch, 70vw);
+}
+
+.site-logo {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 16px;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.42));
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  margin-bottom: 0;
+  font-size: clamp(2.3rem, 7vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: var(--accent-strong);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: var(--muted);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.intro-text {
+  display: grid;
+  max-width: 800px;
+  gap: 14px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.glass-card {
+  min-height: 100%;
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: var(--radius-md);
+  background: var(--panel-strong);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.socials a {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, opacity 180ms ease;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  border-color: rgba(139, 211, 255, 0.62);
+  background: rgba(139, 211, 255, 0.16);
+  transform: translateY(-3px);
+}
+
+.socials a:focus-visible {
+  outline: 3px solid rgba(139, 211, 255, 0.36);
+  outline-offset: 3px;
+}
+
+.socials img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 24px, 560px);
+    padding: 24px 0;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 26px;
+  }
+
+  .socials {
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+}
+
+@keyframes intro-overlay {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes intro-video {
+  to {
+    opacity: 0.52;
+    filter: saturate(0.9) contrast(1.08);
+  }
+}
+
+@keyframes intro-content {
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lastfm-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 0.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .lastfm-widget--live .lastfm-widget__status {
+    animation: none;
+  }
+
+  body::before {
+    opacity: 1;
+    animation: none;
+  }
+
+  .page-shell {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    animation: none;
+  }
+
+  .background-video {
+    display: none;
+  }
+}
