@@ -10,8 +10,19 @@
   <link rel="stylesheet" href="здрасьте.рф_files/main.css">
 </head>
 <body>
-  <video class="background-video" autoplay muted loop playsinline preload="auto" poster="здрасьте.рф_files/logoImage.jpg" aria-hidden="true">
-    <source src="здрасьте.рф_files/doom.mp4" type="video/mp4">
+  <video
+    class="background-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    disablepictureinpicture
+    disableremoteplayback
+    aria-hidden="true"
+  >
+    <source src="здрасьте.рф_files/doom.mp4#t=0.001" type="video/mp4">
   </video>
 
   <main class="page-shell">
@@ -75,13 +86,8 @@
       </a>
     </nav>
   </main>
+  <script src="здрасьте.рф_files/video-bg.js" defer></script>
   <script src="здрасьте.рф_files/lastfm-config.js"></script>
   <script src="здрасьте.рф_files/lastfm.js" defer></script>
-  <script>
-    const bgVideo = document.querySelector('.background-video');
-    if (bgVideo) {
-      bgVideo.play().catch(() => {});
-    }
-  </script>
 </body>
 </html>
