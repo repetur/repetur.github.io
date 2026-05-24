@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="ну здарова">
+  <title>здрасьте.рф</title>
+  <link rel="preconnect" href="https://rsms.me">
+  <link rel="stylesheet" href="здрасьте.рф_files/main.css">
+</head>
+<body>
+  <video class="background-video" autoplay muted loop playsinline preload="auto" poster="здрасьте.рф_files/logoImage.jpg" aria-hidden="true">
+    <source src="здрасьте.рф_files/doom.mp4" type="video/mp4">
+  </video>
+
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="intro-title">
+      <div class="window-bar" aria-hidden="true">
+        <span class="window-dot window-dot--red"></span>
+        <span class="window-dot window-dot--yellow"></span>
+        <span class="window-dot window-dot--green"></span>
+      </div>
+
+      <div class="hero-content">
+        <a
+          id="lastfm-widget"
+          class="lastfm-widget"
+          href="https://last.fm/user/eXmansa"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="last.fm"
+        >
+          <span class="lastfm-widget__status" aria-hidden="true"></span>
+          <img class="lastfm-widget__cover" src="" alt="" width="32" height="32" hidden>
+          <span class="lastfm-widget__text">
+            <span class="lastfm-widget__label">last.fm</span>
+            <span class="lastfm-widget__meta">загрузка…</span>
+          </span>
+        </a>
+        <img class="site-logo" src="здрасьте.рф_files/logoImage.jpg" alt="Аватар" width="96" height="96">
+        <h1 id="intro-title">здрасьте, я...</h1>
+
+        <div class="intro-text">
+          <p>не Настя, а 18-летний студент, фотограф, музыкант и не программист из Вятки. увлекаюсь историей родного города, компами, урбанистикой и игрой на фортепиано.</p>
+          <p>фанат яблочного шорли, шварца и играт. я вам не ласт.фм. и не спотифай. ☝️ 🦊 #антихайп</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid" aria-label="Подробности и контакты">
+      <article class="glass-card">
+        <h2>где меня найти (раз уж глобус покрути)</h2>
+        <p>лучше пишите в тг ❤️</p>
+      </article>
+
+      <article class="glass-card">
+        <h2>а почему здрасьте то?</h2>
+        <p>всё ещё не знаю. зато теперь сайт побаще :3</p>
+      </article>
+    </section>
+
+    <nav class="socials" aria-label="Социальные ссылки">
+      <a href="https://www.youtube.com/@exmansa" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <img src="здрасьте.рф_files/yt.svg" alt="" width="32" height="32">
+      </a>
+      <a href="https://steamcommunity.com/id/eXmansa" target="_blank" rel="noopener noreferrer" aria-label="Steam">
+        <img src="здрасьте.рф_files/steakm.png" alt="" width="32" height="32">
+      </a>
+      <a href="https://t.me/ya_vyatchanin" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <img src="здрасьте.рф_files/tg.svg" alt="" width="32" height="32">
+      </a>
+      <a href="mailto:luckyneck@icloud.com" aria-label="нова пошта">
+        <img src="здрасьте.рф_files/mail.svg" alt="" width="32" height="32">
+      </a>
+    </nav>
+  </main>
+  <script src="здрасьте.рф_files/lastfm-config.js"></script>
+  <script src="здрасьте.рф_files/lastfm.js" defer></script>
+  <script>
+    const bgVideo = document.querySelector('.background-video');
+    if (bgVideo) {
+      bgVideo.play().catch(() => {});
+    }
+  </script>
+</body>
+</html>
